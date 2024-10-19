@@ -1,0 +1,201 @@
+meta:
+  author: dbd
+units:
+  kx: cx
+  ky: cy
+  px: kx + 4
+  py: ky + 4
+points:
+  key:
+    footprints:
+      choc_hotswap:
+        type: choc
+        params:
+          hotswap: true
+          reverse: true
+          keycaps: true
+        nets:
+          from: =colrow
+          to: =column_net
+      diode:
+        type: diode
+        nets:
+          from: =colrow
+          to: =row_net
+        anchor:
+          shift: [0, -5]
+  zones:
+    main:
+      anchor:
+          shift: [100, -100]
+      key.padding: ky
+      columns:
+        one:
+          key:
+            spread: kx
+            column_net: P21
+        two:
+          key:
+            spread: kx
+            column_net: P20
+        three:
+          key:
+            stagger: 5
+            bind: [0, 10, 12, 10]
+            spread: kx
+            column_net: P19
+        four:
+          key:
+            stagger: 6
+            bind: [0, 10, 12, 10]
+            spread: kx
+            column_net: P18
+        five:
+          key:
+            stagger: -6
+            bind: [0, 10, 12, 10]
+            spread: kx
+            column_net: P15
+        six:
+          key:
+            stagger: -5
+            bind: [0, 10, 12, 10]
+            spread: kx
+            column_net: P14
+      rows:
+        one:
+          row_net: P7
+        two:
+          row_net: P8
+        three:
+          row_net: P9
+        four:
+          row_net: P10
+        five:
+          row_net: P16
+    thumb:
+      anchor:
+        ref: main_three_one
+      columns:
+        zero:
+          key: 
+             shift: [0, -30]
+             spread: kx
+             column_net: P20
+        one:
+          key: 
+             shift: [0, -30]
+             spread: kx
+             column_net: P19
+        two:
+          key: 
+             shift: [0, -30]
+             spread: kx
+             column_net: P18
+        three:
+          key:
+            rotate: -10
+            shift: [3, -33]
+            bind: [5, 0, 0, 0]
+            spread: kx
+            column_net: P15
+        four:
+          key:
+            rotate: -20
+            shift: [5, -40]
+            bind: [5, 0, 5, 30]
+            spread: kx
+            column_net: P14
+      rows:
+        mods:
+          row_net: P6
+          key: 
+             shift: [0, -10]
+outlines:
+  holes:
+    - where: true
+      what: rectangle
+      size: 18
+  edge:
+    - where: true
+      what: rectangle
+      size: 18
+      bound: true
+  board:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+        - ref: main_one_five
+          shift: [-0.5px,0.5py]
+        - ref: main_three_five
+          shift: [-0.5px,0.5py]
+        - ref: main_four_five
+          shift: [-0.5px,0.5py]
+        - ref: main_four_five
+          shift: [0.5px,0.5py]
+        - ref: main_six_five
+          shift: [0.5px,0.5py]
+        - ref: main_six_five
+          shift: [1.5px,0.5py]
+        - ref: main_six_one
+          shift: [1.5px,0.5py]
+        - ref: thumb_four_mods
+          shift: [0.5px,0.5py]
+        - ref: thumb_four_mods
+          shift: [0.5px,-0.5py]
+        - ref: thumb_four_mods
+          shift: [-0.5px,-0.5py]
+        - ref: thumb_three_mods
+          shift: [-0.5px,-0.5py]
+        - ref: thumb_two_mods
+          shift: [-0.5px,-0.5py]
+        - ref: thumb_zero_mods
+          shift: [-0.5px,-0.5py]
+        - ref: main_two_one
+          shift: [-0.5px,-0.5py]
+        - ref: main_one_one
+          shift: [-0.5px,-0.5py]
+  keys:
+    - what: rectangle
+      where: true
+      bound: false
+      size: [kx-0.5,ky-0.5]
+  plate:
+    - board
+    - -keys
+cases:
+  test:
+  - what: outline
+    name: edge
+    extrude: 5
+pcbs.test:
+  outlines:
+    - outline: board
+  footprints:
+    choc_hotswap:
+        what: choc
+        where: true
+        params:
+          from: '{{colrow}}'
+          to: '{{column_net}}'
+          keycaps: true
+          reverse: true
+          hotswap: true
+    diode:
+      what: diode
+      where:
+        - /main_.*/
+        - /thumb_.*/
+      adjust.shift: [0, -5]
+      params:
+        from: "{{colrow}}"
+        to: "{{row_net}}"
+    promicro:
+      what: promicro
+      params:
+        orientation: "down"
+      where:
+        ref: main_six_five
+        shift: [1px,-0.45py]
+        rotate: -90
