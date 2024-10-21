@@ -192,9 +192,7 @@ pcbs.test:
         from: "{{colrow}}"
         to: "{{row_net}}"
     promicro:
-      what: promicro
-      params:
-        orientation: "down"
+      what: promicro_pretty
       where:
         ref: main_six_five
         shift: [1px,-0.45py]
