@@ -25,81 +25,81 @@ points:
         anchor:
           shift: [0, -5]
   zones:
-    main:
+    matrix:
       anchor:
           shift: [100, -100]
       key.padding: ky
       columns:
-        one:
+        outer:
           key:
             spread: kx
             column_net: P21
-        two:
+        pinky:
           key:
             spread: kx
             column_net: P20
-        three:
+        ring:
           key:
             stagger: 5
             bind: [0, 10, 12, 10]
             spread: kx
             column_net: P19
-        four:
+        middle:
           key:
             stagger: 6
             bind: [0, 10, 12, 10]
             spread: kx
             column_net: P18
-        five:
+        index:
           key:
             stagger: -6
             bind: [0, 10, 12, 10]
             spread: kx
             column_net: P15
-        six:
+        inner:
           key:
             stagger: -5
             bind: [0, 10, 12, 10]
             spread: kx
             column_net: P14
       rows:
-        one:
+        mods:
           row_net: P7
-        two:
+        lower:
           row_net: P8
-        three:
+        home:
           row_net: P9
-        four:
+        upper:
           row_net: P10
-        five:
+        number:
           row_net: P16
     thumb:
       anchor:
-        ref: main_three_one
+        ref: matrix_ring_mods
       columns:
-        zero:
+        end:
           key: 
              shift: [0, -30]
              spread: kx
              column_net: P20
-        one:
+        mute:
           key: 
              shift: [0, -30]
              spread: kx
              column_net: P19
-        two:
+        alt:
           key: 
              shift: [0, -30]
              spread: kx
              column_net: P18
-        three:
+        space:
           key:
             rotate: -10
             shift: [3, -33]
             bind: [5, 0, 0, 0]
             spread: kx
             column_net: P15
-        four:
+        layer:
           key:
             rotate: -20
             shift: [5, -40]
@@ -107,7 +107,7 @@ points:
             spread: kx
             column_net: P14
       rows:
-        mods:
+        cluster:
           row_net: P6
           key: 
              shift: [0, -10]
@@ -126,35 +126,35 @@ outlines:
       operation: stack
       fillet: 2
       points:
-        - ref: main_one_five
+        - ref: matrix_outer_number
           shift: [-0.5px,0.5py]
-        - ref: main_three_five
+        - ref: matrix_ring_number
           shift: [-0.5px,0.5py]
-        - ref: main_four_five
+        - ref: matrix_middle_number
           shift: [-0.5px,0.5py]
-        - ref: main_four_five
+        - ref: matrix_middle_number
           shift: [0.5px,0.5py]
-        - ref: main_six_five
+        - ref: matrix_inner_number
           shift: [0.5px,0.5py]
-        - ref: main_six_five
+        - ref: matrix_inner_number
           shift: [1.5px,0.5py]
-        - ref: main_six_one
+        - ref: matrix_inner_mods
           shift: [1.5px,0.5py]
-        - ref: thumb_four_mods
+        - ref: thumb_layer_cluster
           shift: [0.5px,0.5py]
-        - ref: thumb_four_mods
+        - ref: thumb_layer_cluster
           shift: [0.5px,-0.5py]
-        - ref: thumb_four_mods
+        - ref: thumb_layer_cluster
           shift: [-0.5px,-0.5py]
-        - ref: thumb_three_mods
+        - ref: thumb_space_cluster
           shift: [-0.5px,-0.5py]
-        - ref: thumb_two_mods
+        - ref: thumb_alt_cluster
           shift: [-0.5px,-0.5py]
-        - ref: thumb_zero_mods
+        - ref: thumb_end_cluster
           shift: [-0.5px,-0.5py]
-        - ref: main_two_one
+        - ref: matrix_pinky_mods
           shift: [-0.5px,-0.5py]
-        - ref: main_one_one
+        - ref: matrix_outer_mods
           shift: [-0.5px,-0.5py]
   keys:
     - what: rectangle
@@ -185,15 +185,15 @@ pcbs.test:
     diode:
       what: diode
       where:
-        - /main_.*/
+        - /matrix_.*/
         - /thumb_.*/
       adjust.shift: [0, -5]
       params:
         from: "{{colrow}}"
         to: "{{row_net}}"
     promicro:
-      what: promicro_pretty
+      what: promicro
       where:
-        ref: main_six_five
+        ref: matrix_inner_number
         shift: [1px,-0.45py]
         rotate: -90
