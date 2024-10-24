@@ -8,7 +8,11 @@ module.exports = {
         (module lib:niceview_headers (layer F.Cu) (tedit 648E0265)
 
         ${p.at /* parametric position */}
-
+        
+        ${'' /* footprint reference */}
+        (fp_text reference "${p.ref}" (at 0 0) (layer F.SilkS) ${p.ref_hide} (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        
         ${''/* pin names */}
         (fp_text user + (at 0 6.3 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
         (fp_text user - (at 0 -6.3 ${p.rot + 90}) (layer F.SilkS) (effects (font (size 0.8 0.8) (thickness 0.15))))
