@@ -91,33 +91,33 @@ points:
         end:
           key:
             spread: kx
-            column_net: row1
+            column_net: row0
         mute:
           key:
             spread: kx
-            column_net: row2
+            column_net: row1
         alt:
           key:
             spread: kx
-            column_net: row3
+            column_net: row2
         space:
           key:
             rotate: -10
             shift: [3, -33]
             bind: [5, 0, 0, 0]
             spread: kx
-            column_net: row4
+            column_net: row3
         layer:
           key:
             rotate: -20
             shift: [5, -40]
             bind: [5, 0, 5, 30]
             spread: kx
-            column_net: row5
+            column_net: row4
             tags: [switch_space]
       rows:
         cluster:
-          row_net: col4
+          row_net: P1
           key:
             shift: [0, -10]
     scrollwheel:
@@ -133,7 +133,7 @@ points:
             height: scrollwheel_height
       rows:
         scrollwheel:
-          row_net: col4
+          row_net: P1
     mcu:
       anchor:
         ref: matrix_inner_number
@@ -415,6 +415,15 @@ pcbs:
           side: B
         adjust:
           shift: [-8.9, 2.5]
+      jumper_left_p1:
+        what: jumper
+        where: mcu
+        params:
+          from: P1
+          to: P1_RAW
+          side: B
+        adjust:
+          shift: [-11.45, 2.5]
       jumper_right_raw:
         what: jumper
         where: mcu
@@ -451,6 +460,16 @@ pcbs:
           side: F
         adjust:
           shift: [-8.9, -2.5]
+          rotate: 180
+      jumper_right_p1:
+        what: jumper
+        where: mcu
+        params:
+          from: P1
+          to: RAW_P1
+          side: F
+        adjust:
+          shift: [-11.45, -2.5]
           rotate: 180
       niceview:
         what: niceview
