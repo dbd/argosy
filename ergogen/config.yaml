@@ -118,6 +118,7 @@ points:
       rows:
         cluster:
           row_net: P1
+          tags: [switch_top]
           key:
             shift: [0, -10]
     scrollwheel:
